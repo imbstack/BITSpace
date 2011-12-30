@@ -1,0 +1,26 @@
+{
+  "name": "BITSpace",
+  "version": "0.0.1",
+  "description": "An space combat game with a fun and educational AI system.",
+  "keywords": "game",
+  "homepage": "https://github.com/bis12/BITSpace",
+  "private": true, 
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bis12/BITSpace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bis12/BITSpace/issues"
+  },
+
+  "bin": {
+    "bitspace-server": "./bin/bitspace-server"
+  }
+
+  "dependencies": {
+    "coffee-script": ">=1.2.0",
+    "villain": "*",
+    "connect": "*"
+  }
+}

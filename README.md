@@ -4,7 +4,7 @@ A space combat game with a fun and educational AI system.
 
 # Install
 
-Install node.js and node package manager.  Once this is done, just running npm install from the base directory will get all of the dependencies installed.
+Install node.js and node package manager.  Once this is done, just running <code>npm install</code> from the base directory will get all of the dependencies installed.
 
 # Run
 

@@ -1,7 +1,39 @@
-@bg: #333;
-@text: #eee;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+
+@bg: #353533;
+@text: #eeeded;
+@link: #deded0;
+
+.shadow() {
+  text-shadow: 1px 1px 1px (@text - #111);
+  -moz-text-shadow: 1px 1px 1px (@text - #111);
+  -webkit-text-shadow: 1px 1px 1px (@text - #111);
+}
+
+.main() {
+  font-size: 2em;
+}
 
 body {
   background-color: @bg; 
   color: @text;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+  font-size: 12px;
+  a {
+    color: @bg;
+    background-color: @link;
+    text-decoration: none;
+    padding: 1px; 
+    .shadow();
+  }
+}
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  .main();
 }

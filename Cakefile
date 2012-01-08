@@ -1,5 +1,6 @@
-fs         = require 'fs'
-{exec}     = require 'child_process'
+fs = require 'fs'
+{exec} = require 'child_process'
+{puts} = require 'util'
 browserify = require 'browserify'
 
 
@@ -10,3 +11,6 @@ task 'build:bundle', 'Compile client js', ->
 
 task 'build', 'Get assets and js ready', ->
   invoke 'build:bundle'
+  puts "Build complete!"
+
+

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>BITSpace</title>
+    <link rel="stylesheet" type="text/less" href="style/local.less">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bitspace.js"></script>
+    <script type="text/javascript" src="js/caat.js"></script>
+    <script type="text/javascript" src="js/less.js"></script>
+    <script>
+      $(function() {
+        var World = require('./src/client');
+        world = new World();
+        world.start();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="content">
+    </div>
+    <footer>
+    <h1>BITSpace | <small>AI based game</small></h1>
+    <a href="/">Go to index</a>
+    </footer>
+  </body>
+</html>

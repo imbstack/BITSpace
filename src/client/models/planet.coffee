@@ -1,12 +1,12 @@
-class Planet
+class Planet extends jaws.Sprite
 
-  constructor: (@x, @y, @radius) ->
-    @repr = new CAAT.ShapeActor().
-      setLocation(@x, @y).
-      setSize(500, @radius).
-      setFillStyle('#0fffff').
-      setStrokeStyle('#fff').
-      enableEvents(true)
+  @assets = ["resources/images/planet.png"]
+
+  constructor: (x, y, @radius) ->
+    super({image: "resources/images/planet.png", x: x, y: y, anchor: "center"})
+
+  update: ->
+    @move(0.5,0.5)
 
 
 module.exports = Planet

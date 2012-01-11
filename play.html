@@ -11,14 +11,24 @@
       $(function() {
         var Game = require('./src/client');
         game = new Game();
-        game.start();
       });
     </script>
   </head>
   <body>
     <div id="content">
+      <div id="home">
+        <h1>BITSpace | <small>AI based game</small></h1>
+        <span class="action play">Play</span>
+        <span class="action options">Options</span>
+        <a href="/">Go to index</a>
+      </div>
+      <div id="options" style="display:none">
+        <p>
+        Options and more options
+        </p>
+        <span class="action home">Home</span>
+      </div>
+      <div id="play" style="display:none"></div>
     </div>
-    <h1>BITSpace | <small>AI based game</small></h1>
-    <a href="/">Go to index</a>
   </body>
 </html>

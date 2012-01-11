@@ -10,6 +10,12 @@
   -webkit-text-shadow: 1px 1px 1px (@text - #111);
 }
 
+.clickable {
+  color: @bg;
+  background-color: @link;
+  text-decoration: none;
+  padding: 1px;
+}
 
 .radial() {
   background: #eeeeee; /* Old browsers */
@@ -32,13 +38,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 1px;
   font-size: 12px;
-  a {
-    color: @bg;
-    background-color: @link;
-    text-decoration: none;
-    padding: 1px; 
-    .shadow();
-  }
+
 }
 
 footer {
@@ -63,6 +63,11 @@ footer {
 #content {
   margin-left: auto;
   margin-right: auto;
+  span.action {
+    cursor: hand;
+    cursor: pointer;
+    .clickable();
+  }
 }
 
 #game {
@@ -73,6 +78,10 @@ h1 {
   .main();
 }
 
+a {
+  .clickable();
+  .shadow();
+}
 
 ::-moz-selection{
   background: @text + #333;

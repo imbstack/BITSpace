@@ -1,13 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
 
-@bg: #353533;
-@text: #eeeded;
-@link: #deded0;
+@text: #353533;
+@bg: #eeeded;
+@link: @text - #111;
 
 .shadow() {
   text-shadow: 1px 1px 1px (@text - #111);
   -moz-text-shadow: 1px 1px 1px (@text - #111);
   -webkit-text-shadow: 1px 1px 1px (@text - #111);
+}
+
+
+.radial() {
+  background: #eeeeee; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #eeeeee 45%, #cccccc 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(45%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* W3C */
 }
 
 .main() {
@@ -16,6 +27,7 @@
 
 body {
   background-color: @bg; 
+  background-repeat: no-repeat;
   color: @text;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 1px;
@@ -29,11 +41,35 @@ body {
   }
 }
 
+footer {
+  height: 20px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px;
+  border-top: 1px dotted @text;
+}
+
+#container {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-left: 1px dotted @text;
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
 }
 
+#game {
+  box-shadow: 0 0 5px 4px #fff;
+}
+
 h1 {
   .main();
 }
+

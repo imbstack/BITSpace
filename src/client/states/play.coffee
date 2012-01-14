@@ -7,12 +7,19 @@ class PlayState
   setup: ->
 
     @planets = new jaws.SpriteList()
+    @ships = new jaws.SpriteList()
 
-    for num in [1..20]
+    for num in [1..10]
       r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
       x = Math.floor(Math.random() * (game.width))
       y = Math.floor(Math.random() * (game.height))
       @planets.push( new Planet(x,y,r,this))
+
+    for num in [1..50]
+      r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
+      x = Math.floor(Math.random() * (game.width))
+      y = Math.floor(Math.random() * (game.height))
+      @ships.push( new Ship(x,y,r,this))
 
     @viewport = new jaws.Viewport({max_x: 50000, max_y: 50000})
 
@@ -25,6 +32,7 @@ class PlayState
 
   update: ->
     @planets.update()
+    @ships.update()
     @parallax.camera_x = @viewport.x
     @parallax.camera_y = @viewport.y
 
@@ -41,9 +49,11 @@ class PlayState
     
   draw: ->
     planets = @planets
+    ships = @ships
     @parallax.draw()
     @viewport.apply( ->
       planets.draw()
+      ships.draw()
     )
 
 

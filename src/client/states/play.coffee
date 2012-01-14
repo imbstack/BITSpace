@@ -8,11 +8,11 @@ class PlayState
 
     @planets = new jaws.SpriteList()
 
-    for num in [0..3]
-      r = 20 + 40 * Math.random()
+    for num in [1..20]
+      r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
       x = Math.floor(Math.random() * (game.width))
       y = Math.floor(Math.random() * (game.height))
-      @planets.push( new Planet x,y,r )
+      @planets.push( new Planet(x,y,r,this))
 
     @viewport = new jaws.Viewport({max_x: 50000, max_y: 50000})
 

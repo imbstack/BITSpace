@@ -21,6 +21,7 @@ class Game
     home = $("#home")
     play = $("#play")
     options = $("#options")
+    setup = $("#setup")
 
     canvas = $("<canvas id='game' width=#{@width} height=#{@height}></canvas>")
     play.append(canvas)
@@ -36,10 +37,21 @@ class Game
       options.show()
     )
 
+    home.find(".setup").click( ->
+      home.hide()
+      setup.show()
+    )
+
     options.find(".home").click( ->
       options.hide()
       home.show()
     )
+
+    setup.find(".home").click( ->
+      setup.hide()
+      home.show()
+    )
+
 
   start: ->
     console.log "Loading assets..."

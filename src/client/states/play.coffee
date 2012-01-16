@@ -15,11 +15,18 @@ class PlayState
       y = Math.floor(Math.random() * (game.height))
       @planets.push( new Planet(x,y,r,this))
 
-    for num in [1..50]
+    for num in [1..15]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
-      x = Math.floor(Math.random() * (game.width))
+      x = (7*game.width/8) + Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
-      @ships.push( new Ship(x,y,r,this))
+      @ships.push( new Ship(x,y,r,this,0))
+
+    for num in [1..15]
+      r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
+      x = Math.floor(Math.random() * (game.width/8))
+      y = Math.floor(Math.random() * (game.height))
+      @ships.push( new Ship(x,y,r,this,1))
+
 
     @viewport = new jaws.Viewport({max_x: 50000, max_y: 50000})
 

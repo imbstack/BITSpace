@@ -8,6 +8,7 @@ class PlayState
 
     @planets = new jaws.SpriteList()
     @ships = new jaws.SpriteList()
+    @splosions = new jaws.SpriteList()
 
     for num in [1..10]
       r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
@@ -57,10 +58,12 @@ class PlayState
   draw: ->
     planets = @planets
     ships = @ships
+    splosions = @splosions
     @parallax.draw()
     @viewport.apply( ->
       planets.draw()
       ships.draw()
+      splosions.draw()
     )
 
 

@@ -44,8 +44,8 @@ class Ship extends jaws.Sprite
   goto: (x,y) ->
     dx = x - @x
     dy = y - @y
-    theta = Math.atan(dy/dx)
-    @rotateTo(theta * 180)
+    theta = Math.atan2(dx,-dy)
+    @rotateTo(theta * 180/Math.PI)
     @move(dx/350,dy/350)
 
   destroy: (c) ->

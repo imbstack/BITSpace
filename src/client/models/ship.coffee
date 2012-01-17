@@ -21,22 +21,14 @@ class Ship extends jaws.Sprite
 
   update: ->
     if @alive
-      @move(0.5,0.5)
+      @goto(500,500)
       collisions = jaws.collideOneWithMany(this, @state.ships)
-      splode = @splode
-      x = @x
-      y = @y
       for c in collisions
-        @alive = false
-        a = new jaws.Sprite({x: x, y: y})
-        a.setImage(@splode.next())
-        @state.splosions.push(a)
-
+        @destroy(c)
+      if collisions.length != 0
+        @destroy(this)
       if jaws.collideOneWithMany(this, @state.planets).length != 0
-        @alive = false
-        a = new jaws.Sprite({x: x, y: y})
-        a.setImage(@splode.next())
-        @state.splosions.push(a)
+        @destroy(this)
 
 
   draw: ->
@@ -49,11 +41,20 @@ class Ship extends jaws.Sprite
       ctx.closePath()
       ctx.fill()
 
+  goto: (x,y) ->
+    dx = x - @x
+    dy = y - @y
+    theta = Math.atan(dy/dx)
+    @rotateTo(theta * 180)
+    @move(dx/350,dy/350)
 
-  destroy: ->
-    console.log "Ship #{@id} (team #{@team}) destroyed!"
-    @alive = false
-    
+  destroy: (c) ->
+    console.log "Ship #{c.id} (team #{c.team}) destroyed!"
+    c.alive = false
+    a = new jaws.Sprite({x: c.x, y: c.y, anchor: "center"})
+    a.setImage(@splode.next())
+    @state.splosions.push(a)
+
 
 
 module.exports = Ship

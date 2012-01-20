@@ -61,18 +61,12 @@ class PlayState
 
     
   draw: ->
-    planets = @planets
-    team0 = @team0
-    team1 = @team1
-    rockets = @rockets
-    splosions = @splosions
     @parallax.draw()
-    @viewport.apply( ->
-      planets.draw()
-      team0.draw()
-      team1.draw()
-      rockets.draw()
-      splosions.draw()
+    @viewport.apply( =>
+      @planets.draw()
+      @team0.draw()
+      @team1.draw()
+      @splosions.draw()
     )
 
 

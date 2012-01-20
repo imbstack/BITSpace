@@ -1,6 +1,7 @@
 PlayState = require('./states/play')
 
 Planet = require './models/planet'
+Rocket = require './models/rocket'
 Ship = require './models/ship'
 
 
@@ -57,6 +58,7 @@ class Game
     console.log "Loading assets..."
     jaws.assets.add(Planet.assets)
     jaws.assets.add(Ship.assets)
+    jaws.assets.add(Rocket.assets)
     jaws.assets.add(["resources/images/space.png", "resources/images/space2.png"])
 
     jaws.preventDefaultKeys(["up", "down", "left", "right", "space"])

@@ -1,3 +1,5 @@
+Rocket = require './rocket'
+
 class Ship extends jaws.Sprite
 
   @assets = ["resources/images/ship.png", "resources/images/splode.png"]
@@ -21,8 +23,11 @@ class Ship extends jaws.Sprite
 
   update: ->
     if @alive
-      @goto(500,500)
-      collisions = jaws.collideOneWithMany(this, @state.ships)
+      if Math.random() > 0.98
+        @attack()
+      @goto(650,450)
+      collisions = jaws.collideOneWithMany(this, @state.team0)
+      collisions.concat jaws.collideOneWithMany(this, @state.team1)
       for c in collisions
         @destroy(c)
       if collisions.length != 0
@@ -47,6 +52,9 @@ class Ship extends jaws.Sprite
     theta = Math.atan2(dx,-dy)
     @rotateTo(theta * 180/Math.PI)
     @move(dx/350,dy/350)
+
+  attack: ->
+    @state.rockets.push( new Rocket(@x, @y, 5, @state) )
 
   destroy: (c) ->
     console.log "Ship #{c.id} (team #{c.team}) destroyed!"

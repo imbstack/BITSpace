@@ -1,5 +1,6 @@
 Planet = require '../models/planet'
 Ship = require '../models/ship'
+Rocket = require '../models/rocket'
 
 
 class PlayState
@@ -7,10 +8,12 @@ class PlayState
   setup: ->
 
     @planets = new jaws.SpriteList()
-    @ships = new jaws.SpriteList()
+    @team0 = new jaws.SpriteList()
+    @team1 = new jaws.SpriteList()
+    @rockets = new jaws.SpriteList()
     @splosions = new jaws.SpriteList()
 
-    for num in [1..10]
+    for num in [1..3]
       r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
       x = Math.floor(Math.random() * (game.width))
       y = Math.floor(Math.random() * (game.height))
@@ -20,16 +23,16 @@ class PlayState
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = (7*game.width/8) + Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
-      @ships.push( new Ship(x,y,r,this,0))
+      @team0.push( new Ship(x,y,r,this,0))
 
     for num in [1..15]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
-      @ships.push( new Ship(x,y,r,this,1))
+      @team1.push( new Ship(x,y,r,this,1))
 
 
-    @viewport = new jaws.Viewport({max_x: 50000, max_y: 50000})
+    @viewport = new jaws.Viewport({max_x: 5000, max_y: 5000})
 
     @parallax = new jaws.Parallax({repeat_x: true, repeat_y: true})
     @parallax.addLayer({image: "resources/images/space.png", damping: 10})
@@ -40,7 +43,9 @@ class PlayState
 
   update: ->
     @planets.update()
-    @ships.update()
+    @team0.update()
+    @team1.update()
+    @rockets.update()
     @parallax.camera_x = @viewport.x
     @parallax.camera_y = @viewport.y
 
@@ -57,12 +62,16 @@ class PlayState
     
   draw: ->
     planets = @planets
-    ships = @ships
+    team0 = @team0
+    team1 = @team1
+    rockets = @rockets
     splosions = @splosions
     @parallax.draw()
     @viewport.apply( ->
       planets.draw()
-      ships.draw()
+      team0.draw()
+      team1.draw()
+      rockets.draw()
       splosions.draw()
     )
 

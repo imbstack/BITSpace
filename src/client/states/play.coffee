@@ -66,6 +66,7 @@ class PlayState
       @planets.draw()
       @team0.draw()
       @team1.draw()
+      @rockets.draw()
       @splosions.draw()
     )
 

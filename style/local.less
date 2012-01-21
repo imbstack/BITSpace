@@ -2,7 +2,8 @@
 
 @text: #353533;
 @bg: #eeeded;
-@link: @text - #111;
+@link: @text - #090909;
+@hilite: #049;
 
 .shadow() {
   text-shadow: 1px 1px 1px (@text - #111);
@@ -10,11 +11,22 @@
   -webkit-text-shadow: 1px 1px 1px (@text - #111);
 }
 
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+
 .clickable {
   color: @bg;
   background-color: @link;
   text-decoration: none;
-  padding: 1px;
+  padding: 2px;
+  &:hover {
+    background-color: darken(@link, 7%);
+    color: lighten(@bg, 7%);
+  }
 }
 
 .radial() {
@@ -27,11 +39,29 @@
   background: radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* W3C */
 }
 
+.rainbow {
+  margin-top: -10px;
+  padding: 0;
+  height: 1px;
+  width: 90%; 
+  background: red; /* not working, let's see some red */
+  background: -moz-linear-gradient( left ,
+    rgba(255, 0, 0, 1) 20%,
+    rgba(0, 255, 0, 0.15) 50%,
+    rgba(0, 0, 255, 1) 100%);
+  background: -webkit-gradient(linear,  left top,  right bottom, 
+    color-stop(20%, rgba(255, 0, 0, 1)), 
+    color-stop(50%, rgba(0, 255, 0, 0.15)),
+    color-stop(100%, rgba(0, 0, 255, 1)));
+}
+
 .main() {
   font-size: 2em;
 }
 
 body {
+  padding: 0;
+  margin: 0;
   background-color: @bg; 
   background-repeat: no-repeat;
   color: @text;

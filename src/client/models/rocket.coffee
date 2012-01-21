@@ -1,21 +1,30 @@
-class Rocket extends jaws.Sprite
+Entity = require('./entity')
+
+class Rocket extends Entity
 
   @assets = ["resources/images/rocket.png"]
+  @count = 0
 
-  constructor: (x, y, @radius, @state) ->
+  constructor: (x, y, @radius, @state, @parent, @target) ->
     super({image: "resources/images/rocket.png", x: x, y: y, anchor: "center"})
+    @id = Rocket.count++
+    @speed = 2.5
+    @alive = true
     @scale(0.5)
 
   update: ->
-    @goto(@state.team1[0].x,@state.team1[0].y)
+    if @alive
+      if not @goto(@target.x,@target.y)
+        @destroy()
 
-  #TODO: Take this and make it a member of some super class
-  goto: (x,y) ->
-    dx = x - @x
-    dy = y - @y
-    theta = Math.atan2(dx,-dy)
-    @rotateTo(theta * 180/Math.PI)
-    @move(dx/150,dy/150)
+  draw: ->
+    if @alive
+      super.draw
+
+  destroy: ->
+    @alive = false
+
+
 
 
 module.exports = Rocket

@@ -11,7 +11,6 @@ class PlayState
     @team0 = new jaws.SpriteList()
     @team1 = new jaws.SpriteList()
     @rockets = new jaws.SpriteList()
-    @splosions = new jaws.SpriteList()
 
     for num in [1..3]
       r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
@@ -19,13 +18,13 @@ class PlayState
       y = Math.floor(Math.random() * (game.height))
       @planets.push( new Planet(x,y,r,this))
 
-    for num in [1..15]
+    for num in [1..30]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = (7*game.width/8) + Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
       @team0.push( new Ship(x,y,r,this,0))
 
-    for num in [1..15]
+    for num in [1..30]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
@@ -42,7 +41,6 @@ class PlayState
     console.log "Beginning game loop..."
 
   update: ->
-    @planets.update()
     @team0.update()
     @team1.update()
     @rockets.update()
@@ -67,7 +65,6 @@ class PlayState
       @team0.draw()
       @team1.draw()
       @rockets.draw()
-      @splosions.draw()
     )
 
 

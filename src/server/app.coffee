@@ -13,6 +13,7 @@ class Application
 
 createAppServer = (config) ->
   webroot = path.join path.dirname(fs.realpathSync(__filename)), '../../'
+  connect.favicon()
 
   server = connect.createServer()
   server.use '/', connect.static(webroot)

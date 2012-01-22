@@ -1,63 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+@import "mixins";
+@import "game";
 
+@cont-width: 400px;
 @text: #353533;
 @bg: #eeeded;
 @link: @text - #090909;
 @hilite: #049;
-
-.shadow() {
-  text-shadow: 1px 1px 1px (@text - #111);
-  -moz-text-shadow: 1px 1px 1px (@text - #111);
-  -webkit-text-shadow: 1px 1px 1px (@text - #111);
-}
-
-.rounded-corners (@radius: 5px) {
-  border-radius: @radius;
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-}
-
-
-.clickable {
-  color: @bg;
-  background-color: @link;
-  text-decoration: none;
-  padding: 2px;
-  &:hover {
-    background-color: darken(@link, 7%);
-    color: lighten(@bg, 7%);
-  }
-}
-
-.radial() {
-  background: #eeeeee; /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover,  #eeeeee 45%, #cccccc 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(45%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* IE10+ */
-  background: radial-gradient(center, ellipse cover,  #eeeeee 45%,#cccccc 100%); /* W3C */
-}
-
-.rainbow {
-  margin-top: -10px;
-  padding: 0;
-  height: 1px;
-  width: 90%; 
-  background: red; /* not working, let's see some red */
-  background: -moz-linear-gradient( left ,
-    rgba(255, 0, 0, 1) 20%,
-    rgba(0, 255, 0, 0.15) 50%,
-    rgba(0, 0, 255, 1) 100%);
-  background: -webkit-gradient(linear,  left top,  right bottom, 
-    color-stop(20%, rgba(255, 0, 0, 1)), 
-    color-stop(50%, rgba(0, 255, 0, 0.15)),
-    color-stop(100%, rgba(0, 0, 255, 1)));
-}
-
-.main() {
-  font-size: 2em;
-}
 
 body {
   padding: 0;
@@ -81,7 +30,7 @@ footer {
 }
 
 #container {
-  width: 400px;
+  width: @cont-width;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
@@ -90,47 +39,45 @@ footer {
   border-left: 1px dotted @text;
 }
 
-#content {
+#logos {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  span.action {
-    cursor: hand;
-    cursor: pointer;
-    .clickable();
+  .transparency(0.7);
+  height: 25px;
+  margin-top: 50px;
+  padding: 20px;
+  width: @cont-width;
+  line-height: 2.4em;
+  a {
+    background: none;
+  }
+  img {
+    height: 100%;
+    vertical-align: middle;
   }
 }
 
-
-.menu {
-  border: 2px dotted @text;
-  min-height: 400px;
+#user {
+ position: absolute;
+ top: 0;
+ left: 0;
+ padding: 2px;
+ border-bottom: 1px solid lighten(@text,20%);
+ border-right: 1px solid lighten(@text,20%);
+ background: darken(@bg, 20%);
+ .transparency(0.3);
+ .bottom-right-rounded-corner(10px);
+ &:hover {
+   .transparency(1.0);
+   .pointer;
+ }
 }
 
-.left {
-  width: 45%;
-  float: left;
-}
-
-.right {
-  width: 45%;
-  float: right;
-}
-
-.equip {
-  height: 40px;
-  line-height: 40px;
-  padding-left: 10px;
-  margin: 7px;
-  border: 3px solid @text;
-}
-
-#game {
-}
 
 h1 {
   .main();
 }
-
 a {
   .clickable();
   .shadow();

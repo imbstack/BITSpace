@@ -21,8 +21,6 @@
   "dependencies": {
     "coffee-script": ">=1.2.0",
     "connect": "*",
-    "underscore": "*",
-    "backbone": "*",
     "browserify": "*",
     "commander": "*"
   }

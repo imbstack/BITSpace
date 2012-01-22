@@ -32,7 +32,7 @@ class Ship extends Entity
 
   update: ->
     if @alive
-      if 0.890 < Math.random() < 0.995 and @active
+      if 0.990 < Math.random() < 0.995 and @active
         @attack('rocket')
       else if 0.995 < Math.random() and @active
         @attack('laser')

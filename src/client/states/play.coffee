@@ -12,19 +12,20 @@ class PlayState
     @team1 = new jaws.SpriteList()
     @rockets = new jaws.SpriteList()
 
-    for num in [1..3]
+    for num in [1..1]
+      break
       r = 20 + (Planet.MAX_RADIUS - 20) * Math.random()
       x = Math.floor(Math.random() * (game.width))
       y = Math.floor(Math.random() * (game.height))
       @planets.push( new Planet(x,y,r,this))
 
-    for num in [1..30]
+    for num in [1..200]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = (7*game.width/8) + Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))
       @team0.push( new Ship(x,y,r,this,0))
 
-    for num in [1..30]
+    for num in [1..1]
       r = 5 + (Ship.MAX_RADIUS - 5) * Math.random()
       x = Math.floor(Math.random() * (game.width/8))
       y = Math.floor(Math.random() * (game.height))

@@ -8,7 +8,7 @@ class Rocket extends Entity
   constructor: (x, y, @radius, @state, @parent, @target) ->
     super({image: "resources/images/rocket.png", x: x, y: y, anchor: "center"})
     @id = Rocket.count++
-    @speed = 2.5
+    @speed = 3.5
     @alive = true
     @scale(0.5)
 
